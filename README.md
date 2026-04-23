@@ -1,1 +1,1 @@
-# A-RAG-Based-Automated-Vector-Database-Update-System-with-Google-Drive-Integration
+An automated Retrieval-Augmented Generation (RAG) data ingestion pipeline that continuously syncs documents from Google Drive into a Pinecone vector database — built entirely as a no-code workflow in n8n.
