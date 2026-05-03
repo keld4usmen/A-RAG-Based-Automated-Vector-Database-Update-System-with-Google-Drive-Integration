@@ -42,3 +42,14 @@ A sample file included in this repository is `HUMAN_RESOURCE_POLICIES_-_GESCI__J
 3. Configure OpenAI API credentials.
 4. Configure Pinecone API credentials and the target index.
 5. Activate the workflow in n8n.
+
+## Frontend Dashboard
+
+A simple UI is available in the `frontend/` folder.
+
+- Open `frontend/index.html` in a browser.
+- Enter your n8n webhook URL for manual ingestion or document upload.
+- Configure the Google Drive folder ID and Pinecone index name.
+- Use the dashboard to prepare HR policy documents and trigger ingestion.
+
+> Note: For local browsing, you can open `frontend/index.html` directly, or serve the folder with a local file server if your browser blocks local file fetches.

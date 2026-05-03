@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>HR Policy Ingestion Dashboard</title>
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <div class="page-shell">
+    <header class="hero">
+      <div>
+        <p class="eyebrow">HR Policy RAG Workflow</p>
+        <h1>Document Ingestion Dashboard</h1>
+        <p class="intro">Upload policy documents, configure your workflow, and trigger ingestion into the Pinecone vector store.</p>
+      </div>
+    </header>
+
+    <main>
+      <section class="card-grid">
+        <article class="card">
+          <h2>Workflow Status</h2>
+          <div class="status-list">
+            <div><span class="label">Workflow</span><span id="status-workflow">Not configured</span></div>
+            <div><span class="label">Source</span><span id="status-source">Google Drive folder</span></div>
+            <div><span class="label">Vector index</span><span id="status-index">Not configured</span></div>
+            <div><span class="label">Last action</span><span id="status-last">No actions yet</span></div>
+          </div>
+        </article>
+
+        <article class="card">
+          <h2>Manual Ingestion</h2>
+          <p>Use this panel to send a manual ingest request to your n8n workflow webhook.</p>
+          <label for="webhook-url">n8n webhook URL</label>
+          <input id="webhook-url" type="url" placeholder="https://your-n8n-instance/webhook/..." />
+          <button id="trigger-btn" class="button button-primary">Trigger manual ingest</button>
+          <p class="hint">If the workflow is set to Google Drive polling, this manual action is optional.</p>
+        </article>
+      </section>
+
+      <section class="card">
+        <h2>Upload HR Policy Document</h2>
+        <form id="upload-form">
+          <label for="document-file">Choose a file</label>
+          <input id="document-file" type="file" accept=".pdf,.doc,.docx,.txt" />
+          <label for="document-title">Document title</label>
+          <input id="document-title" type="text" placeholder="Employee Handbook, HR Policy, etc." />
+          <button type="submit" class="button button-secondary">Prepare Upload</button>
+        </form>
+
+        <div id="upload-preview" class="preview hidden">
+          <h3>Prepared file</h3>
+          <p><strong id="preview-name"></strong></p>
+          <p><span class="label">Size:</span> <span id="preview-size"></span></p>
+          <button id="upload-btn" class="button button-primary">Send to ingestion endpoint</button>
+        </div>
+      </section>
+
+      <section class="card">
+        <h2>Configuration</h2>
+        <p>Store your workflow settings so the UI can display the current state and support manual triggers.</p>
+        <label for="drive-folder-id">Google Drive folder ID</label>
+        <input id="drive-folder-id" type="text" placeholder="11CRmSwlJVdEtM2od6cH8ws_Mo9a16b4B" />
+        <label for="pinecone-index">Pinecone index name</label>
+        <input id="pinecone-index" type="text" placeholder="n8ntesla" />
+        <button id="save-settings" class="button button-secondary">Save settings</button>
+      </section>
+
+      <section class="card">
+        <h2>Activity Log</h2>
+        <div id="log" class="log"></div>
+      </section>
+    </main>
+  </div>
+
+  <script src="app.js"></script>
+</body>
+</html>
